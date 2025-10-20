@@ -1,11 +1,10 @@
 # ASL Letter Typer
 
-A web application that uses your webcam and a Teachable Machine model to detect ASL (American Sign Language) letters and automatically type them.
+A web application that uses your webcam to detect ASL (American Sign Language) letters and automatically type them.
 
 ## Features
 
 - **Real-time ASL Detection**: Uses your webcam to detect ASL letters in real-time
-- **Teachable Machine Integration**: Load your custom trained ASL model from Teachable Machine
 - **Automatic Typing**: Detected letters are automatically typed after a configurable delay
 - **Confidence Threshold**: Adjustable confidence threshold to filter out uncertain predictions
 - **Stable Detection**: Requires multiple consecutive detections before typing to avoid false positives
@@ -49,10 +48,9 @@ A web application that uses your webcam and a Teachable Machine model to detect 
 ### How It Works
 
 1. **Webcam Capture**: Accesses your camera using WebRTC APIs
-2. **Model Loading**: Loads your Teachable Machine model using TensorFlow.js
-3. **Real-time Prediction**: Continuously analyzes webcam frames (10 FPS)
-4. **Stable Detection**: Requires 10+ consecutive detections above confidence threshold
-5. **Timed Typing**: Types letter after holding it for the specified delay period
+2. **Real-time Prediction**: Continuously analyzes webcam frames (10 FPS)
+3. **Stable Detection**: Requires 10+ consecutive detections above confidence threshold
+4. **Timed Typing**: Types letter after holding it for the specified delay period
 
 ### File Structure
 
