@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL Letter Typer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <!-- Teachable Machine Image Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ASL Letter Typer</h1>
+            <p>Hold up ASL letters in front of your camera to type them automatically!</p>
+        </header>
+
+        <div class="main-content">
+            <div class="camera-section">
+                <div class="video-container">
+                    <video id="webcam" autoplay muted playsinline></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+                
+                <div class="controls">
+                    <button id="start-btn">Start Camera</button>
+                    <button id="stop-btn" disabled>Stop Camera</button>
+                    <input type="text" id="model-url" placeholder="Enter your Teachable Machine model URL" />
+                    <button id="load-model-btn">Load Model</button>
+                </div>
+
+                <div class="status">
+                    <div id="status-message">Click "Start Camera" to begin</div>
+                    <div id="model-status">No model loaded</div>
+                </div>
+            </div>
+
+            <div class="prediction-section">
+                <div class="current-prediction">
+                    <h3>Current Detection:</h3>
+                    <div id="current-letter" class="letter-display">-</div>
+                    <div id="confidence" class="confidence-display">0%</div>
+                </div>
+
+                <div class="predictions-list">
+                    <h4>All Predictions:</h4>
+                    <div id="predictions-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h3>Typed Output:</h3>
+            <textarea id="typed-output" placeholder="Detected letters will appear here..." readonly></textarea>
+            <div class="output-controls">
+                <button id="clear-output">Clear</button>
+                <button id="copy-output">Copy to Clipboard</button>
+            </div>
+        </div>
+
+        <div class="settings">
+            <h4>Settings:</h4>
+            <div class="setting-group">
+                <label for="confidence-threshold">Confidence Threshold:</label>
+                <input type="range" id="confidence-threshold" min="0.1" max="1.0" step="0.1" value="0.7">
+                <span id="threshold-value">0.7</span>
+            </div>
+            <div class="setting-group">
+                <label for="detection-delay">Detection Delay (seconds):</label>
+                <input type="range" id="detection-delay" min="1" max="5" step="0.5" value="2">
+                <span id="delay-value">2</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
